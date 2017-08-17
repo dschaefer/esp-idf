@@ -46,3 +46,4 @@ examples/protocols/aws_iot/*/main/certs/*.pem.*
 *.gcno
 coverage.info
 coverage_report/
+/build/

@@ -1,0 +1,8 @@
+add_library(spi_flash STATIC
+	partition.c)
+
+target_include_directories(spi_flash PUBLIC include)
+
+target_include_directories(spi_flash PRIVATE 
+	$<TARGET_PROPERTY:bootloader_support,INCLUDE_DIRECTORIES>
+)
