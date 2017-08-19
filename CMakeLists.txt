@@ -5,6 +5,8 @@ project(esp-idf)
 # TODO bootloader only
 add_definitions(-DBOOTLOADER_BUILD=1)
 
+add_definitions(-DESP_PLATFORM)
+
 add_subdirectory(components/bootloader_support)
 add_subdirectory(components/esp32)
 add_subdirectory(components/soc)

@@ -1,5 +1,4 @@
-add_library(spi_flash STATIC
-	partition.c)
+add_library(spi_flash STATIC spi_flash_rom_patch.c)
 
 target_include_directories(spi_flash PUBLIC include)
 
