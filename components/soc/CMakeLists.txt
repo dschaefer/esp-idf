@@ -9,8 +9,11 @@ add_library(soc STATIC
 	esp32/soc_memory_layout.c
 )
 
-target_include_directories(soc PUBLIC esp32/include)
+target_include_directories(soc PUBLIC
+	esp32/include
+	$<TARGET_PROPERTY:log,INTERFACE_INCLUDE_DIRECTORIES>
+)
 
 target_include_directories(soc PRIVATE 
-	$<TARGET_PROPERTY:esp32,INCLUDE_DIRECTORIES>
+	$<TARGET_PROPERTY:esp32,INTERFACE_INCLUDE_DIRECTORIES>
 )

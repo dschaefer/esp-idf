@@ -10,11 +10,14 @@ add_library(bootloader_support STATIC
 	src/secure_boot.c
 )
 
-target_include_directories(bootloader_support PUBLIC include)
+target_include_directories(bootloader_support PUBLIC
+	include
+)
 
-target_include_directories(bootloader_support PRIVATE 
+target_include_directories(bootloader_support PRIVATE
+	${CMAKE_BINARY_DIR} 
 	include_priv
-	$<TARGET_PROPERTY:esp32,INCLUDE_DIRECTORIES>
-	$<TARGET_PROPERTY:soc,INCLUDE_DIRECTORIES>
-	$<TARGET_PROPERTY:micro-ecc,INCLUDE_DIRECTORIES>
+	$<TARGET_PROPERTY:esp32,INTERFACE_INCLUDE_DIRECTORIES>
+	$<TARGET_PROPERTY:micro-ecc,INTERFACE_INCLUDE_DIRECTORIES>
+	$<TARGET_PROPERTY:spi_flash,INTERFACE_INCLUDE_DIRECTORIES>
 )
