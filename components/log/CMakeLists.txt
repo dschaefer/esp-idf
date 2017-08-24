@@ -1,4 +1,6 @@
-add_library(log STATIC log.c)
+add_library(log STATIC
+	log.c
+)
 
 target_include_directories(log PUBLIC
 	include
