@@ -79,17 +79,18 @@ add_library(mbedtls STATIC
 )
 
 target_include_directories(mbedtls PUBLIC
-	include
 	port/include
+	include
 )
 
 target_include_directories(mbedtls PRIVATE
 	${CMAKE_BINARY_DIR}
+	library
 	$<TARGET_PROPERTY:esp32,INTERFACE_INCLUDE_DIRECTORIES>
 	$<TARGET_PROPERTY:newlib,INTERFACE_INCLUDE_DIRECTORIES>
 	$<TARGET_PROPERTY:vfs,INTERFACE_INCLUDE_DIRECTORIES>
 )
 
-target_compile_definitions(mbedtls PRIVATE
+target_compile_definitions(mbedtls PUBLIC
 	MBEDTLS_CONFIG_FILE="mbedtls/esp_config.h"
 )

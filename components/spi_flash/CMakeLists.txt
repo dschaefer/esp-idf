@@ -1,4 +1,8 @@
 add_library(spi_flash STATIC
+	cache_utils.c
+	flash_mmap.c
+	flash_ops.c
+	partition.c
 	spi_flash_rom_patch.c
 )
 

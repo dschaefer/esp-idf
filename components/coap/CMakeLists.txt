@@ -25,6 +25,6 @@ target_include_directories(coap PUBLIC
 	$<TARGET_PROPERTY:lwip,INTERFACE_INCLUDE_DIRECTORIES>	
 )
 
-target_compile_definitions(coap PRIVATE
+target_compile_definitions(coap PUBLIC
 	WITH_POSIX
 )
