@@ -61,6 +61,7 @@ target_include_directories(lwip PUBLIC
 	include/lwip/port
 	include/lwip/posix
 	$<TARGET_PROPERTY:esp32,INTERFACE_INCLUDE_DIRECTORIES>
+	$<TARGET_PROPERTY:vfs,INTERFACE_INCLUDE_DIRECTORIES>
 )
 
 target_include_directories(lwip PRIVATE

@@ -5,7 +5,6 @@ add_library(esp32 STATIC
 	core_dump.c
 	cpu_start.c
 	crosscore_int.c
-	deep_sleep.c
 	dport_access.c
 	event_default_handlers.c
 	event_loop.c
@@ -38,6 +37,7 @@ target_include_directories(esp32 PUBLIC
 target_include_directories(esp32 PRIVATE
 	include/xtensa 
 	$<TARGET_PROPERTY:app_trace,INTERFACE_INCLUDE_DIRECTORIES>
+	$<TARGET_PROPERTY:bootloader_support,INTERFACE_INCLUDE_DIRECTORIES>
 	$<TARGET_PROPERTY:ethernet,INTERFACE_INCLUDE_DIRECTORIES>
 	$<TARGET_PROPERTY:heap,INTERFACE_INCLUDE_DIRECTORIES>
 	$<TARGET_PROPERTY:newlib,INTERFACE_INCLUDE_DIRECTORIES>
@@ -47,3 +47,5 @@ target_include_directories(esp32 PRIVATE
 	$<TARGET_PROPERTY:wpa_supplicant,INTERFACE_INCLUDE_DIRECTORIES>
 	$<TARGET_PROPERTY:vfs,INTERFACE_INCLUDE_DIRECTORIES>
 )
+
+set(CONFIG_ESP32_DEFAULT_CPU_FREQ_MHZ 160 CACHE STRING "CPU frequency: 80, 160, 240")

@@ -1,5 +1,4 @@
 add_library(sodium STATIC
-	private/randombytes_esp32.c
 	libsodium/src/libsodium/crypto_aead/chacha20poly1305/sodium/aead_chacha20poly1305.c
 	libsodium/src/libsodium/crypto_aead/xchacha20poly1305/sodium/aead_xchacha20poly1305.c
 	libsodium/src/libsodium/crypto_auth/crypto_auth.c

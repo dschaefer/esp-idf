@@ -34,7 +34,6 @@ add_library(mbedtls STATIC
 	library/md4.c
 	library/md5.c
 	library/memory_buffer_alloc.c
-	library/net.c
 	library/padlock.c
 	library/pem.c
 	library/pk.c
@@ -75,7 +74,6 @@ add_library(mbedtls STATIC
 	port/esp_sha256.c
 	port/esp_sha512.c
 	port/mbedtls_debug.c
-	port/net.c
 )
 
 target_include_directories(mbedtls PUBLIC
