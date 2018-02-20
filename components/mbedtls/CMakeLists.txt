@@ -80,4 +80,20 @@ add_library(mbedtls STATIC
 
 target_include_directories(mbedtls PUBLIC
     include
+    port/include
+)
+
+target_include_directories(mbedtls PRIVATE
+    $<TARGET_PROPERTY:esp32,INTERFACE_INCLUDE_DIRECTORIES>
+    $<TARGET_PROPERTY:ethernet,INTERFACE_INCLUDE_DIRECTORIES>
+    $<TARGET_PROPERTY:log,INTERFACE_INCLUDE_DIRECTORIES>
+    $<TARGET_PROPERTY:lwip,INTERFACE_INCLUDE_DIRECTORIES>
+)
+
+target_compile_definitions(mbedtls PRIVATE
+    -DMBEDTLS_CONFIG_FILE="mbedtls/esp_config.h"
+)
+
+target_compile_options(mbedtls PRIVATE
+    -Wno-old-style-declaration -Wno-address
 )

@@ -6,6 +6,8 @@ add_definitions(
     -DBOOTLOADER_BUILD=1
 )
 
+set(BOOTLOADER_BUILD 1)
+
 include(${ESP_IDF}/esp-idf.cmake)
 
 add_executable(bootloader.elf
@@ -44,6 +46,7 @@ set_target_properties(bootloader.elf PROPERTIES LINK_FLAGS
 )
 
 add_custom_command(TARGET bootloader.elf POST_BUILD
+    BYPRODUCTS bootloader.bin
     COMMAND python ${ESP_IDF}/components/esptool_py/esptool/esptool.py
         --chip esp32 elf2image bootloader.elf
 )

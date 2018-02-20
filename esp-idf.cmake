@@ -1,4 +1,5 @@
 set(CMAKE_C_STANDARD 99)
+set(CMAKE_CXX_STANDARD 11)
 
 enable_language(ASM)
 
@@ -15,7 +16,7 @@ set(CMAKE_CXX_FLAGS
     -mlongcalls \
     -Wall -Werror=all -Wno-error=unused-function -Wno-error=unused-but-set-variable \
     -Wno-error=unused-variable -Wno-error=deprecated-declarations -Wextra -Wno-unused-parameter \
-    -Wno-sign-compare -Wno-old-style-declaration"
+    -Wno-sign-compare"
 )
 
 include_directories(
@@ -25,7 +26,6 @@ include_directories(
 add_definitions(
     -DESP_PLATFORM
     -DIDF_VER=\"v3.1-dev-388-gc3bec5b\"
-    -DHAVE_CONFIG_H
 )
 
 add_subdirectory(${ESP_IDF}/components components)
@@ -69,6 +69,7 @@ function(target_esp32 name)
     )
 
     add_custom_command(TARGET ${name} POST_BUILD
+        BYPRODUCTS ${bin}
         COMMAND python ${ESP_IDF}/components/esptool_py/esptool/esptool.py
             --chip esp32 elf2image ${name}
     )

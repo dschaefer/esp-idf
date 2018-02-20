@@ -10,3 +10,9 @@ add_library(nvs_flash STATIC
 target_include_directories(nvs_flash PUBLIC
     include
 )
+
+target_include_directories(nvs_flash PRIVATE
+    $<TARGET_PROPERTY:esp32,INTERFACE_INCLUDE_DIRECTORIES>
+    $<TARGET_PROPERTY:log,INTERFACE_INCLUDE_DIRECTORIES>
+    $<TARGET_PROPERTY:spi_flash,INTERFACE_INCLUDE_DIRECTORIES>
+)

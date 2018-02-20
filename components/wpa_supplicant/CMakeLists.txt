@@ -38,3 +38,8 @@ target_include_directories(wpa_supplicant PUBLIC
     include
     port/include
 )
+
+target_include_directories(wpa_supplicant PRIVATE
+    $<TARGET_PROPERTY:esp32,INTERFACE_INCLUDE_DIRECTORIES>
+    $<TARGET_PROPERTY:mbedtls,INTERFACE_INCLUDE_DIRECTORIES>
+)

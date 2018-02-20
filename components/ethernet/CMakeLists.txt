@@ -9,3 +9,8 @@ add_library(ethernet STATIC
 target_include_directories(ethernet PUBLIC
     include
 )
+
+target_include_directories(ethernet PRIVATE
+    $<TARGET_PROPERTY:esp32,INTERFACE_INCLUDE_DIRECTORIES>
+    $<TARGET_PROPERTY:log,INTERFACE_INCLUDE_DIRECTORIES>
+)

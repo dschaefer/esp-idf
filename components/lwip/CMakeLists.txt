@@ -60,5 +60,15 @@ add_library(lwip STATIC
 target_include_directories(lwip PUBLIC
     include/lwip
     include/lwip/port
+    include/lwip/posix
     $<TARGET_PROPERTY:vfs,INTERFACE_INCLUDE_DIRECTORIES>
+)
+
+target_include_directories(lwip PRIVATE
+    $<TARGET_PROPERTY:ethernet,INTERFACE_INCLUDE_DIRECTORIES>
+    $<TARGET_PROPERTY:log,INTERFACE_INCLUDE_DIRECTORIES>
+)
+
+target_compile_options(lwip PRIVATE
+    -Wno-old-style-declaration -Wno-address
 )
